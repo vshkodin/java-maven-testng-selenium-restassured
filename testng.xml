@@ -1,7 +1,8 @@
 <suite name="AnyNameSuite" verbose="1">
   <test name="AnyTestName">
     <classes>
-      <class name="src.SimpleTestUI.SimpleTestUI" />
+      <!--<class name="src.SimpleTestUI.SimpleTestUI" />-->
+      <class name="src.SimpleTestAPI.SimpleTestAPI" />
     </classes>
   </test>
 </suite>
