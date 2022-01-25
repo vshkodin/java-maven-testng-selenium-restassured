@@ -24,40 +24,39 @@ public class ApplyPage extends BaseDriver {
        String fieldEmail = "[name='username']";
  	   String fieldPassword = "[name='password']";
        //locators
-        String fieldLoanAmount = "[name='desiredAmount']";
-	    String fieldBorrowerFirstName = "[name='borrowerFirstName']";
-	    String fieldBorrowerLastName = "[name='borrowerLastName']";
-	    String fieldBorrowerStreet = "[name='borrowerStreet']";
-	    String fieldBorrowerCity = "[name='borrowerCity']";
-	    String fieldBorrowerState = "[name='borrowerState']";
-	    String fieldBorrowerZipCode = "[name='borrowerZipCode']";
-	    String fieldBorrowerDateOfBirth = "[name='borrowerDateOfBirth']";
-	    String fieldBorrowerIncome = "[name='borrowerIncome']";
-	    String fieldBorrowerAdditionalIncome = "[name='borrowerAdditionalIncome']";
-
+       String fieldLoanAmount = "[name='desiredAmount']";
+	   String fieldBorrowerFirstName = "[name='borrowerFirstName']";
+	   String fieldBorrowerLastName = "[name='borrowerLastName']";
+	   String fieldBorrowerStreet = "[name='borrowerStreet']";
+	   String fieldBorrowerCity = "[name='borrowerCity']";
+	   String fieldBorrowerState = "[name='borrowerState']";
+	   String fieldBorrowerZipCode = "[name='borrowerZipCode']";
+	   String fieldBorrowerDateOfBirth = "[name='borrowerDateOfBirth']";
+	   String fieldBorrowerIncome = "[name='borrowerIncome']";
+	   String fieldBorrowerAdditionalIncome = "[name='borrowerAdditionalIncome']";
 
 	     // Locators - Dropdowns
-	    String dropdownLoanPurpose = "select[aria-label='Loan Purpose']";
-	    String dropdownLoanPurposeOptionCreditCard = "option[value='CREDIT_CARD']";
+	   String dropdownLoanPurpose = "select[aria-label='Loan Purpose']";
+	   String dropdownLoanPurposeOptionCreditCard = "option[value='CREDIT_CARD']";
 
 	    // Locators - Buttons
-	    String buttonCheckYourRateOne = "button[data-auto='CheckYourRate']";
-	    String buttonCheckYourRateTwo = "[data-auto='submitPersonalInfo']";
-	    String buttonContinue = "button[data-auto='continuePersonalInfo']";
-	    String buttonSubmit = "[data-auto='submitPersonalInfo']";
-	    String buttonMenu = "[class='header-nav']";
-	    String buttonSignOut = "[href='/funnel/logout']";
-	    String buttonSignInToYourAccount = "[data-auto='login']";
+	   String buttonCheckYourRateOne = "button[data-auto='CheckYourRate']";
+	   String buttonCheckYourRateTwo = "[data-auto='submitPersonalInfo']";
+	   String buttonContinue = "button[data-auto='continuePersonalInfo']";
+	   String buttonSubmit = "[data-auto='submitPersonalInfo']";
+	   String buttonMenu = "[class='header-nav']";
+	   String buttonSignOut = "[href='/funnel/logout']";
+	   String buttonSignInToYourAccount = "[data-auto='login']";
 
         // Locators Checkboxes
-        String checkboxAgreements = "[data-checked='false'] >div[class^='sc-irKD']";
+       String checkboxAgreements = "[data-checked='false'] >div[class^='sc-irKD']";
 
         // Locators Labels
-        String labelUserLoanAmount = "[data-auto='userLoanAmount']";
-        String labelDefaultLoanInterestRate = "[data-auto='defaultLoanInterestRate']";
-        String labelDefaultLoanTerm = "[data-auto='defaultLoanTerm']";
-        String labelDefaultMonthlyPayment = "[data-auto='defaultMonthlyPayment']";
-        String labelAPR = "[data-auto='defaultAPR']";
+       String labelUserLoanAmount = "[data-auto='userLoanAmount']";
+       String labelDefaultLoanInterestRate = "[data-auto='defaultLoanInterestRate']";
+       String labelDefaultLoanTerm = "[data-auto='defaultLoanTerm']";
+       String labelDefaultMonthlyPayment = "[data-auto='defaultMonthlyPayment']";
+       String labelAPR = "[data-auto='defaultAPR']";
 
 
      public void ApplyPage() {
@@ -69,22 +68,22 @@ public class ApplyPage extends BaseDriver {
 
 
      public void exit() {
-                 super.exit();
+        super.exit();
         }
 
      public void validatePageTitle() {
-                 super.assertTitle(textExpectedTitleApplyPage);
-            }
+        super.assertTitle(textExpectedTitleApplyPage);
+        }
 
 
-      public void validatePageUrl() {
-                super.assertCurrentUrl(textExpectedUrlApplyPage);
-             }
+     public void validatePageUrl() {
+        super.assertCurrentUrl(textExpectedUrlApplyPage);
+        }
 
 
      public void logout() {
-                super.click(buttonMenu);
-                super.click(buttonSignOut);
+        super.click(buttonMenu);
+        super.click(buttonSignOut);
         }
 
      public String[] rememberRates() {
@@ -118,5 +117,5 @@ public class ApplyPage extends BaseDriver {
             super.waitElem(buttonCheckYourRateTwo);
             super.click(buttonCheckYourRateTwo);
             super.waitElem(labelUserLoanAmount);
-        }
+     }
 }

@@ -1,4 +1,4 @@
-Java, Maven, TestNG, Selenium
+Java, Maven, TestNG, Selenium, Restassured
 ### How to run
 ```
 $ mvn  test

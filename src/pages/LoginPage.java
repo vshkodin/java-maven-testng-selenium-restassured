@@ -9,6 +9,7 @@ public class LoginPage extends BaseDriver {
 	   String textExpectedTitleLoginPage = "Sign in | Upgrade";
        // Links
 	   String urlLoginPage =  "/portal/login";
+	   String textExpectedUrlOfferPage= "/funnel/offer-page";
 	   // locators
        String fieldEmail = "[name='username']";
  	   String fieldPassword = "[name='password']";
@@ -41,10 +42,13 @@ public class LoginPage extends BaseDriver {
             }
 
 
-      public void validatePageUrl() {
+     public void validatePageUrl() {
                 super.assertCurrentUrl(urlLoginPage);
-             }
+            }
 
+      public void validatePageUrlAuthUser() {
+                super.assertCurrentUrl(textExpectedUrlOfferPage);
+             }
 
      public void logout() {
                 super.click(buttonMenu);

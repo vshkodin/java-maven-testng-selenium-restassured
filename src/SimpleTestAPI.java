@@ -16,18 +16,17 @@ import org.hamcrest.core.CombinableMatcher;
 
 public class SimpleTestAPI {
 
-	 String payload = "{\"loanAppUuid\":\"b8096ec7-2150-405f-84f5-ae99864b3e96\",\"skipSideEffects\": \"true\" }";
-     String payloadTwo = "{\"loanAppUuid\":\"b8096ec7-2150-405f-84f5-ae99864b3e97\",\"skipSideEffects\": \"true\" }";
+	 String payloadTrue = "{\"loanAppUuid\":\"b8096ec7-2150-405f-84f5-ae99864b3e96\",\"skipSideEffects\": \"true\" }";
+     String payloadFalse = "{\"loanAppUuid\":\"b8096ec7-2150-405f-84f5-ae99864b3e97\",\"skipSideEffects\": \"true\" }";
 
-	 public static Response doPostRequest() {
+	 public Response doPostRequest() {
         RestAssured.defaultParser = Parser.JSON;
-        String payload = "{\"loanAppUuid\":\"b8096ec7-2150-405f-84f5-ae99864b3e96\",\"skipSideEffects\": \"true\" }";
         return
             given()
                 .header("x-cf-source-id", "coding-challenge")
                 .header("x-cf-corr-id", "31b98526-7e02-11ec-90d6-0242ac120003")
                 .header("Content-Type", "application/json")
-                .body(payload)
+                .body(payloadTrue)
                      .when().post("https://credapi.credify.tech/api/brfunnelorch/v2/resume/byLeadSecret")
                          .then()
                           .statusCode(200)
@@ -36,10 +35,10 @@ public class SimpleTestAPI {
 
 	 @Test()
 	 public void aFastTestOne() {
-        Response response = doPostRequest();
-        Map<String, String>  usernames = response.jsonPath().getMap("loanAppResumptionInfo");
-         Assert.assertEquals(usernames.get("productType"), "PERSONAL_LOAN");
-         }
+     Response response = doPostRequest();
+     Map<String, String>  usernames = response.jsonPath().getMap("loanAppResumptionInfo");
+     Assert.assertEquals(usernames.get("productType"), "PERSONAL_LOAN");
+      }
 
 
 
@@ -50,7 +49,7 @@ public class SimpleTestAPI {
                 .header("x-cf-source-id", "coding-challenge")
                 .header("x-cf-corr-id", "31b98526-7e02-11ec-90d6-0242ac120003")
                 .header("Content-Type:", "application/json")  // Placed error here Content-Type:
-                    .body(payload)
+                    .body(payloadTrue)
                      .when().post("https://credapi.credify.tech/api/brfunnelorch/v2/resume/byLeadSecret")
                          .then()
                           .statusCode(500);
@@ -64,7 +63,7 @@ public class SimpleTestAPI {
                 .header("x-cf-source-id", "coding-challenge")
                 .header("x-cf-corr-id", "31b98526-7e02-11ec-90d6-0242ac120003")
                 .header("Content-Type", "application/json")
-                .body(payloadTwo)
+                .body(payloadFalse)
                      .when().post("https://credapi.credify.tech/api/brfunnelorch/v2/resume/byLeadSecret")
                          .then()
                           .statusCode(404);

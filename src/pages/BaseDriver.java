@@ -34,7 +34,7 @@ public class BaseDriver {
 
         public BaseDriver() {
             System.setProperty("webdriver.chrome.driver", "C:/tools/chromedriver.exe");
-            //driver.manage().window().maximize();
+            driver.manage().window().maximize();
             driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
         }
 

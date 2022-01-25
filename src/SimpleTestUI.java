@@ -7,6 +7,7 @@ import org.testng.Assert;
 public class SimpleTestUI {
 	 @Test()
 	 public void aFastTest() {
+
             ApplyPage apply = new ApplyPage();
             apply.openPage();
             apply.validatePageTitle();
@@ -17,14 +18,15 @@ public class SimpleTestUI {
             apply.exit();
 
            LoginPage login = new LoginPage();
-             login.openPage();
-             login.validatePageTitle();
-             login.validatePageUrl();
-             login.authUser();
-             String[] arr2 = login.rememberRates();
-             login.logout();
-             login.exit();
+           login.openPage();
+           login.validatePageTitle();
+           login.validatePageUrl();
+           login.authUser();
+           login.validatePageUrlAuthUser();
+           String[] arr2 = login.rememberRates();
+           login.logout();
+           login.exit();
 
-            Assert.assertEquals(arr1, arr2);
-            }
+           Assert.assertEquals(arr1, arr2);
+     }
 }
