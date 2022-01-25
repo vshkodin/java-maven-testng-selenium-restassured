@@ -1,5 +1,6 @@
 package src.pages.BaseDriver;
 
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 import org.testng.annotations.*;
 import org.testng.Assert;
@@ -23,6 +24,12 @@ public class BaseDriver {
 	    String textExpectedUrlOfferPage= "/funnel/offer-page";
 	    String textExpectedUrlLoginPage= "/portal/login";
 
+        // Locators Labels
+        String labelUserLoanAmount = "[data-auto='userLoanAmount']";
+        String labelDefaultLoanInterestRate = "[data-auto='defaultLoanInterestRate']";
+        String labelDefaultLoanTerm = "[data-auto='defaultLoanTerm']";
+        String labelDefaultMonthlyPayment = "[data-auto='defaultMonthlyPayment']";
+        String labelAPR = "[data-auto='defaultAPR']";
 
 
         public BaseDriver() {
@@ -63,85 +70,22 @@ public class BaseDriver {
         public void assertCurrentUrl(String expectedUrl) {
             //  validate Page Title
             String strUrl = driver.getCurrentUrl();
-            Assert.assertEquals(strUrl, expectedUrl);
+            Assert.assertEquals(strUrl, baseUrl + expectedUrl);
             }
 
 
-        public void assertURL(String elem) {
+        public String[] getRates() {
+            String expectedUserLoanAmount = driver.findElement(By.cssSelector(labelUserLoanAmount)).getText();
+            String expectedDefaultMonthlyPayment = driver.findElement(By.cssSelector(labelDefaultMonthlyPayment)).getText();
+            String expectedDefaultLoanTerm = driver.findElement(By.cssSelector(labelDefaultLoanTerm)).getText();
+            String expectedDefaultLoanInterestRate = driver.findElement(By.cssSelector(labelDefaultLoanInterestRate)).getText();
+            String expectedAPR = driver.findElement(By.cssSelector(labelAPR)).getText();
+            String[] arr = { expectedUserLoanAmount, expectedDefaultMonthlyPayment, expectedDefaultLoanTerm, expectedDefaultLoanInterestRate,expectedAPR };
+            return(arr);
             }
 
 
         public void exit() {
             driver.quit();
             }
-
  }
-
-//
-//
-//         // Links
-//
-// 	    String urlLoginPage = baseUrl + "/portal/login";
-//
-// 	    // values, texts
-//
-// 	    String textExpectedTitleLoginPage = "Sign in | Upgrade";
-// 	    String textExpectedTitleOfferPage = "Affordable Online Personal Loans | Upgrade";
-//
-//         // Locators
-//         // Locators fields
-//
-// 	    String fieldEmail = "[name='username']";
-// 	    String fieldPassword = "[name='password']";
-//
-//         // Locators - Dropdowns
-// 	    String dropdownLoanPurpose = "select[aria-label='Loan Purpose']";
-// 	    String dropdownLoanPurposeOptionCreditCard = "option[value='CREDIT_CARD']";
-// 	    // Locators - Buttons
-// 	    String buttonCheckYourRateOne = "button[data-auto='CheckYourRate']";
-// 	    String buttonCheckYourRateTwo = "[data-auto='submitPersonalInfo']";
-// 	    String buttonContinue = "button[data-auto='continuePersonalInfo']";
-// 	    String buttonSubmit = "[data-auto='submitPersonalInfo']";
-// 	    String buttonMenu = "[class='header-nav']";
-// 	    String buttonSignOut = "[href='/funnel/logout']";
-// 	    String buttonSignInToYourAccount = "[data-auto='login']";
-//
-//         // Locators Checkboxes
-//         //String checkboxAgreements = "[name='agreements']";
-//         String checkboxAgreements = "[data-checked='false'] >div[class^='sc-irKD']";
-//
-//         // Locators Labels
-//         String labelUserLoanAmount = "[data-auto='userLoanAmount']";
-//         String labelDefaultLoanInterestRate = "[data-auto='defaultLoanInterestRate']";
-//         String labelDefaultLoanTerm = "[data-auto='defaultLoanTerm']";
-//         String labelDefaultMonthlyPayment = "[data-auto='defaultMonthlyPayment']";
-//         String labelAPR = "[data-auto='defaultAPR']";
-
-        //
-
-
-        //Driver setup
-        // Optional. If not specified, WebDriver searches the PATH for chromedriver.
-
-	    //driver.get(urlApplyPage);
-
-
-
-//         // login
-//         driver.get(urlLoginPage);
-//         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(fieldEmail)));
-//
-//         driver.findElement(By.cssSelector(fieldEmail)).sendKeys(textUserEmail);
-//         driver.findElement(By.cssSelector(fieldPassword)).sendKeys(textUserPassword);
-//         driver.findElement(By.cssSelector(buttonSignInToYourAccount)).click();
-//         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(labelUserLoanAmount)));
-//
-//
-//         // Validate Assertions
-//         Assert.assertEquals(driver.getCurrentUrl(), textExpectedUrlOfferPage);
-//         Assert.assertEquals(driver.findElement(By.cssSelector(labelUserLoanAmount)).getText(), expectedUserLoanAmount);
-//         Assert.assertEquals(driver.findElement(By.cssSelector(labelDefaultMonthlyPayment)).getText(), expectedDefaultMonthlyPayment);
-//         Assert.assertEquals(driver.findElement(By.cssSelector(labelDefaultLoanTerm)).getText(), expectedDefaultLoanTerm);
-//         Assert.assertEquals(driver.findElement(By.cssSelector(labelDefaultLoanInterestRate)).getText(), expectedDefaultLoanInterestRate);
-//         Assert.assertEquals(driver.findElement(By.cssSelector(labelAPR)).getText(), expectedAPR);
-

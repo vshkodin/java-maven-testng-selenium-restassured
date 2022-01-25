@@ -5,6 +5,9 @@ import src.pages.BaseDriver.BaseDriver;
 
 public class ApplyPage extends BaseDriver {
 
+	   // values, texts
+	   String textExpectedTitleOfferPage = "Affordable Online Personal Loans | Upgrade";
+
        String urlApplyPage = "/phone/nonDMFunnel";
        String valueLoanAmount = "2000";
        String textIncome = "120000";
@@ -47,7 +50,6 @@ public class ApplyPage extends BaseDriver {
 	    String buttonSignInToYourAccount = "[data-auto='login']";
 
         // Locators Checkboxes
-        //String checkboxAgreements = "[name='agreements']";
         String checkboxAgreements = "[data-checked='false'] >div[class^='sc-irKD']";
 
         // Locators Labels
@@ -80,19 +82,14 @@ public class ApplyPage extends BaseDriver {
              }
 
 
-     public void Logout() {
+     public void logout() {
                 super.click(buttonMenu);
                 super.click(buttonSignOut);
         }
 
-//      public void rememberRates() {
-//         // Remember Rates
-//         String expectedUserLoanAmount = driver.findElement(By.cssSelector(labelUserLoanAmount)).getText();
-//         String expectedDefaultMonthlyPayment = driver.findElement(By.cssSelector(labelDefaultMonthlyPayment)).getText();
-//         String expectedDefaultLoanTerm = driver.findElement(By.cssSelector(labelDefaultLoanTerm)).getText();
-//         String expectedDefaultLoanInterestRate = driver.findElement(By.cssSelector(labelDefaultLoanInterestRate)).getText();
-//         String expectedAPR = driver.findElement(By.cssSelector(labelAPR)).getText();
-//         }
+     public String[] rememberRates() {
+        return (super.getRates());
+        }
 
      public void applyUser() {
             super.sendText(fieldLoanAmount,valueLoanAmount);
