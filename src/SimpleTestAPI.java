@@ -15,12 +15,12 @@ import org.hamcrest.core.CombinableMatcher;
 
 public class SimpleTestAPI {
 
-	 String payloadTrue = "{\"loanAppUuid\":\"b8096ec7-2150-405f-84f5-ae99864b3e96\",\"skipSideEffects\": \"true\" }";
+     String payloadTrue = "{\"loanAppUuid\":\"b8096ec7-2150-405f-84f5-ae99864b3e96\",\"skipSideEffects\": \"true\" }";
      String payloadFalse = "{\"loanAppUuid\":\"b8096ec7-2150-405f-84f5-ae99864b3e97\",\"skipSideEffects\": \"true\" }";
      String baseUrl = "https://credapi.credify.tech";
      String endPoint = baseUrl + "/api/brfunnelorch/v2/resume/byLeadSecret";
 
-	 public Response doPostRequest(String payload, int statusCode ) {
+     public Response doPostRequest(String payload, int statusCode ) {
         RestAssured.defaultParser = Parser.JSON;
         return
             given()
